@@ -50,4 +50,14 @@ class Connector
         return $this->zttp->get($this->uri . $uri)->json();
     }
 
+    /**
+     * @param $uri
+     * @param array $attributes
+     * @return mixed
+     */
+    public function post($uri, array $attributes = [])
+    {
+        return $this->zttp->post($this->uri . $uri, $attributes)->json();
+    }
+
 }

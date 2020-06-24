@@ -2,6 +2,7 @@
 namespace NickNickIO\Octoprint\Requests;
 
 use NickNickIO\Octoprint\Connector;
+use NickNickIO\Octoprint\Response;
 
 class Request
 {
@@ -47,11 +48,17 @@ class Request
             return collect($response)->first();
         }
 
+        // Fallback for when a single resource has multiple arrays.
         if (array_keys($resources)[0] == $array_key) {
             return new $resource($resources[$array_key]);
         }
 
         return $response;
+    }
+
+    protected function response(int $code)
+    {
+        return (new Response($code))->response;
     }
 
 }
