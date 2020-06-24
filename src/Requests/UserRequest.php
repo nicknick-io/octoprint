@@ -8,8 +8,8 @@ class UserRequest extends Request implements UserInterface
 {
     public function list()
     {
-        $resources = $this->connection->get('/access/users');
-        return $this->load($resources, 'UserResource', 'users');
+        $resources = $this->connector->get('/access/users');
+        return $this->load($resources, UserResource::class, 'users');
     }
 
     public function get(string $username)

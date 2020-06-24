@@ -3,7 +3,7 @@ namespace NickNickIO\Octoprint;
 
 use Zttp\Zttp;
 
-class Connection
+class Connector
 {
 
     /**

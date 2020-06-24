@@ -1,20 +1,26 @@
 <?php
 namespace NickNickIO\Octoprint;
 
+use NickNickIO\Octoprint\Requests\ConnectionRequest;
 use NickNickIO\Octoprint\Requests\UserRequest;
 
 class Octoprint
 {
 
     /**
-     * @var Connection
+     * @var Connector
      */
-    protected $connection;
+    protected $connector;
 
     /**
      * @var UserRequest
      */
     public $user;
+
+    /**
+     * @var ConnectionRequest
+     */
+    public $connection;
 
     /**
      * Octoprint constructor.
@@ -23,8 +29,9 @@ class Octoprint
      */
     public function __construct($ip, $token)
     {
-        $this->connection = new Connection($ip, $token);
-        $this->user = new UserRequest($this->connection);
+        $this->connector = new Connector($ip, $token);
+        $this->user = new UserRequest($this->connector);
+        $this->connection = new ConnectionRequest($this->connector);
     }
 
 }
